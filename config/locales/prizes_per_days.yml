@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      prizes_per_day:
+        one: ""
+        few: Призы по дням
+        many: Призы по дням
+        other: Призы по дням
+
+    attributes:
+      prizes_per_day:
+        date: Дата
+        n: Кол-во призов

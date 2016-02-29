@@ -1,0 +1,38 @@
+.spacer_20
+a.logo-black.ui-clickable data-controller="NavScreenCtrl" data-screen="main" href="#"
+.instruction
+  .column
+    .icon.icon_1
+    .label Отвечай на вопросы
+  .column
+    .icon.icon_2
+    .label Накапливай баллы
+  .column
+    .icon.icon_3
+    .label Сражайся за призы
+  .player-state.anonymous
+    .auth-position
+      h3 Авторизируйся <br>для участия в конкурсе
+      a.auth-button.auth-button-fb.ui-clickable data-controller="AuthCtrl" data-action="auth" data-provider="fb" href="#" 
+      a.auth-button.auth-button-vk.ui-clickable data-controller="AuthCtrl" data-action="auth" data-provider="vk" href="#" 
+  .player-state.loading
+    .loader.auth-player-loader
+  .player-state.toomuch
+    p Дневной лимит попыток исчерпан, попробуйте пройти тест завтра
+  .player-state.auth_error
+    p Ошибка авторизации
+    p
+      a.goback data-controller="AuthCtrl" data-action="back" href="#" попробовать еще раз
+  .player-state.authorized
+    .state-dependable data-state="auth_done" data-controller="TestStateCtrl" style="display:none;"
+      .start-position
+        .button.start-button.ui-clickable data-controller="TestingCtrl" data-action="start" href="#"  Старт
+    .state-dependable data-state="started" data-controller="TestStateCtrl" style="display:none;"
+      .timer 5
+
+
+
+
+
+.answer-position style="display:none;"
+  .button.answer-button готово

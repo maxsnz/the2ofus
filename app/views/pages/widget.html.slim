@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    title The2ofus widget
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+
+    = stylesheet_link_tag 'widget'
+
+    = render "_/google_analytics" if Rails.env.production?
+    = render("_/yandex_metrica") if Rails.env.production?
+    = render :partial => '_/sharing_includes'
+
+  body
+    .screens
+      = render "_/video"
+      .screen.screen_main 
+        = render :partial =>  "_/screen_main",   layout: 'screen'
+      .screen.screen_about
+        = render :partial =>  "_/screen_about",  layout: 'screen'
+      .screen.screen_rating
+        = render :partial =>  "_/screen_rating", layout: 'screen'
+      .screen.screen_prizes
+        = render :partial =>  "_/screen_prizes", layout: 'screen'
+      .screen.screen_rules
+        = render :partial =>  "_/screen_rules",  layout: 'screen'
+      .screen.screen_test
+        = render :partial =>  "_/screen_test",   layout: 'screen'
+      .screen.screen_finish
+        = render :partial =>  "_/screen_finish"
+    = render "_/share"
+    .popup.popup_test
+       = render :partial =>  "_/popup_test"
+    .popup.popup_react
+      = render :partial =>  "_/test_react"
+    .popup.popup_result
+      = render :partial =>  "_/popup_result"
+    .loader 
+
+
+   
+    = render '_/tmpls'
+    = javascript_include_tag "widget" 

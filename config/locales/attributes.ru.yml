@@ -1,0 +1,5 @@
+ru:
+  attributes:
+    id: ID
+    city: Город
+    created_at: Время

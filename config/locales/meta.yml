@@ -1,0 +1,12 @@
+ru:
+  meta:
+    _defaults:
+      og:title: '#правильныйофис'
+      og:type: article
+      og:image: sharing.png
+      og:site_name: '#правильныйофис'
+      og:description: Покажи, что твой офис — правильный, и выиграй запас Velle для себя и коллег.
+
+    photos:
+      show:
+        og:description: Это — самый правильный офис дня. Покажи свой и выиграй запас Velle для себя и коллег

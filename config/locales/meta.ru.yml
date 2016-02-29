@@ -1,0 +1,12 @@
+ru:
+  meta:
+    _defaults:
+      og:title: 'The 2 of us'
+      og:type: article
+      og:image: share.png
+      og:site_name: The2ofus
+      og:description: '#the2ofus'
+    
+    pages:
+      index: 
+

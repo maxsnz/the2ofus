@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      prizes_number:
+        one: ""
+        few: Разыграно призов
+        many: Разыграно призов
+        other: Разыграно призов
+
+    attributes:
+      prizes_number:
+        n: Разыграно призов

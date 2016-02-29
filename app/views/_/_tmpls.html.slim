@@ -1,0 +1,161 @@
+<script type="text/html" id="tmpl_result">
+  <div class="result">
+    <div class="spacer-40"></div>
+    <div class="pic"><img src="<%= player.photo %>" /></div>
+    <p>Твой результат</p>
+    <div class="score"><%= score %></div>
+    <div class="player-position loading">
+      <div class="player-score"></div>
+      <div class="player-place"></div>
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="tmpl_rating">
+  <li class="rating-item">
+    <span class="score"><%= score %></span>
+    <span class="name"><%= name %></span>
+  </li>
+</script>
+
+<script type="text/html" id="tmpl_bonusquestion">
+  <div class="question question-type-bonus">
+    <div class="question_timer">100</div>
+    <div class="question-question">Бонусный вопрос, за 100 баллов! Держи ритм! <br>Включи звук и нажимай в такт</div>
+    <div class="icon-position">
+      <div class="play-icon"></div>
+      <div class="sound-icon-position" style="display:none;">
+        <div class="sound-icon-yellow" style="display:none;"></div>
+      </div>
+    </div>
+    <div class="progressbar">
+      <div class="progress"></div>
+    </div>
+    <div class="score"></div>
+    <div class="next" data-action="next"></div>
+  </div>
+</script>
+
+<script type="text/html" id="tmpl_question">
+  <div class="question question-type-<%= kind %>">
+    <div class="question_timer">100</div>
+    <div class="question-question"><%= question %></div>
+    
+    <% if (kind == 'simple') { %>
+      <div class="question-options">
+        <div class="questions-options-row">
+          <div class="questions-options-cell">
+            <div class="question-option"   data-value="1">
+              <span>A. <%= options[0].text %></span>
+            </div>
+          </div>
+          <div class="questions-options-cell">
+            <div class="question-option"   data-value="2">
+              <span>B. <%= options[1].text %></span>
+            </div>
+          </div>
+        </div>
+        <div class="questions-options-row">
+          <div class="questions-options-cell">
+            <div class="question-option"   data-value="3">
+              <span>C. <%= options[2].text %></span>
+            </div>
+          </div>
+          <div class="questions-options-cell">
+            <div class="question-option"   data-value="4">
+              <span>D. <%= options[3].text %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } else if (kind == 'simple_image') { %>
+      <div class="question-image"><img src="<%= picture.picture.url %>" /></div>
+      <div class="question-options">
+        <div class="questions-options-row">
+          <div class="question-option"   data-value="1">
+            <span>A. <%= options[0].text %></span>
+          </div>
+        </div>
+        <div class="questions-options-row">
+          <div class="question-option"   data-value="2">
+            <span>B. <%= options[1].text %></span>
+          </div>
+        </div>
+        <div class="questions-options-row">
+          <div class="question-option"   data-value="3">
+            <span>C. <%= options[2].text %></span>
+          </div>
+        </div>
+        <div class="questions-options-row">
+          <div class="question-option"   data-value="4">
+            <span>D. <%= options[3].text %></span>
+          </div>
+        </div>
+      </div>
+    <% } else if (kind == 'images') { %>
+      <div class="question-options">
+        <div class="question-option"   data-value="1">
+          <div class="question-option-picture" style="background-image:url(<%= options[0].image.picture1.pic.url %>);"></div>
+          <div class="question-option-text">A. <%= options[0].text %></div>
+        </div>
+        <div class="question-option"   data-value="2">
+          <div class="question-option-picture" style="background-image:url(<%= options[1].image.picture2.pic.url %>);"></div>
+          <div class="question-option-text">B. <%= options[1].text %></div>
+        </div>
+        <div class="question-option"   data-value="3">
+          <div class="question-option-picture" style="background-image:url(<%= options[2].image.picture3.pic.url %>);"></div>
+          <div class="question-option-text">C. <%= options[2].text %></div>
+        </div>
+        <div class="question-option"   data-value="4">
+          <div class="question-option-picture" style="background-image:url(<%= options[3].image.picture4.pic.url %>);"></div>
+          <div class="question-option-text">D. <%= options[3].text %></div>
+        </div>
+      </div>
+    <% } else if (kind == 'order') { %>
+      <div class="question-options">
+        <ul class="question-options-container">
+          <li class="question-option" data-value="1">
+            <div class="question-option-text"><%= options[0].text %></div>
+          </li>
+          <li class="question-option" data-value="2">
+            <div class="question-option-text"><%= options[1].text %></div>
+          </li>
+          <li class="question-option" data-value="3">
+            <div class="question-option-text"><%= options[2].text %></div>
+          </li>
+          <li class="question-option" data-value="4">
+            <div class="question-option-text"><%= options[3].text %></div>
+          </li>
+        </ul>
+        <div class="question-options-numbers">
+          <div class="question-options-number">1</div>
+          <div class="question-options-number">2</div>
+          <div class="question-options-number">3</div>
+          <div class="question-options-number">4</div>
+        </div>
+      </div>
+      <div class="order-icon"></div>
+    <% } %>
+    <div class="next "  data-action="next"> </div>
+  </div>
+</script>
+
+<audio id="bit" class="preload">
+  <source src="#{asset_path('bit.mp3')}" type="audio/mpeg" />
+  <source src="#{asset_path('bit.ogg')}" type="audio/ogg" />
+</audio>
+
+/ <audio id="bit_250" class="preload">
+/   <source src="#{asset_path('250_bit.mp3')}" type="audio/mpeg" />
+/   <source src="#{asset_path('250_bit.ogg')}" type="audio/ogg" />
+/ </audio>
+
+/ <audio id="bit_500" class="preload">
+/   <source src="#{asset_path('500_bit.mp3')}" type="audio/mpeg" />
+/   <source src="#{asset_path('500_bit.ogg')}" type="audio/ogg" />
+/ </audio>
+
+/ <audio id="bit_1000" class="preload">
+/   <source src="#{asset_path('1000_bit.mp3')}" type="audio/mpeg" />
+/   <source src="#{asset_path('1000_bit.ogg')}" type="audio/ogg" />
+/ </audio>

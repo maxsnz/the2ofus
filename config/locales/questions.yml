@@ -1,0 +1,50 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        question:
+          attributes:
+            options:
+              invalid: не содержит правильного ответа
+
+    models:
+      question:
+        one: ""
+        few: Вопросы
+        many: Вопросы
+        other: Вопросы
+
+      result:
+        one: ""
+        few: Результат(ов)
+        many: Результата
+        other: Результаты
+
+    attributes:
+      question:
+        title: Вопрос
+        kind: Тип вопроса
+        option1: Ответ 1
+        option2: Ответ 2
+        option3: Ответ 3
+        option4: Ответ 4
+        picture: Картинка вопроса
+        picture1:  Картинка ответа 1
+        picture2:  Картинка ответа 2
+        picture3:  Картинка ответа 3
+        picture4:  Картинка ответа 4
+        correct: Верный ответ
+      result:
+        player: Участник
+        seconds: Затраченное время
+        created_at: Дата
+        score: Очки
+      player:
+        player: Участник
+        score: Очки
+        attempts: Количество попыток
+
+  simple_form:
+    hints:
+      question:
+        options: По одному в строке, правильный отмечается символом * в начале строки

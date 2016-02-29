@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    title The2ofus map
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+
+    = stylesheet_link_tag 'map'
+
+    = render "_/google_analytics" if Rails.env.production?
+    = render("_/yandex_metrica") if Rails.env.production?
+
+  body.start
+    #map
+    .overlay
+    .top-menu
+      a.menu-item.menu-icon_1 href="http://www.tallinksilja.ru/ru/passengers" target="_blank"
+      a.menu-item.menu-icon_2 href="http://www.tallinksilja.ru/ru/passengers" target="_blank"
+      a.menu-item.goabout href="#" О пароме    
+      .menucopy Самые музыкальные паромы <br>Silja Serenade и Silja Symphony
+    .screen.screen_start
+      .icons
+        .icon.icon_car
+        .icon.icon_ship
+        .icon.icon_car
+      h1 Как добраться до Стокгольма?
+      input.map-input tyle="text" placeholder="Укажи начало пути" data-value="Санкт-Петербург, Пионерская улица, дом 2"
+      button.calculate-button
+
+    .screen.screen_finish style="display:none;"
+      h2.yourroute Твой маршрут
+      .route-container
+        .route-ship 11 часов
+        .route-arrow
+        .route-car 5 часов
+        .route-arrow
+        .route-start Выезжать завтра <br>в <span>7:30</span>
+      p.shortcopy Прокатись с музыкой и отдохни <br>на комфортабельном пароме
+      a.buybutton href="http://www.tallinksilja.ru/partycruise" target="_blank" Купить билет
+
+
+
+    .screen.screen_about style="display:none;"
+      .inner   
+        .content-position
+          p Уютные спа и джакузи, вкусные рестораны, детские комнаты и множество магазинов — море любимой  музыки ждёт везде! 
+          p Отправься с нами в Стокгольм — круиз в каюте С-А класса по цене от 1 060 руб.*
+          p.small * Цена указана за круиз Хельсинки-Стокгольм-Хельсинки за 1 пассажира, при условии размещения 4-х пассажиров в каюте из расчета курса 1 EUR=71 РУБ. Срок акции с 1.10.2015 — 19.12.2015. <br>Срок бронирования с 1.10.2015 — 19.12.2015.
+          a.buybutton href="http://www.tallinksilja.ru/partycruise" target="_blank" Купить билет
+    .newroute Новый маршрут
+
+
+    = javascript_include_tag "map" 
+    script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_UFA-o14U7nxrVpS14z49kgl_xhHK_JI&signed_in=true&callback=initMap" async=true defer=true

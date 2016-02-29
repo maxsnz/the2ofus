@@ -1,0 +1,17 @@
+ru:
+  activerecord:
+    models:
+      manual_import:
+        one: ""
+        few: Ручной импорт
+        many: Ручной импорт
+        other: Ручной импорт
+
+  simple_form:
+    labels:
+      manual_import:
+        urls: Урлы Вконтакте и Twitter
+
+    hints:
+      manual_import:
+        urls: По одному в строке

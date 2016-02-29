@@ -1,0 +1,40 @@
+.sidebar-bg
+
+.spacer_20
+a.logo-black.ui-clickable data-controller="NavScreenCtrl" data-screen="main" href="#"
+.rating-container
+  ol.left
+  ol.right start="6"
+
+.sidebar
+
+  .player-state.anonymous
+    .auth-position
+      h5 Уже участвовал? <br>авторизируйся
+      a.auth-button.auth-button-fb.ui-clickable data-controller="AuthCtrl" data-action="auth" data-provider="fb" href="#" 
+      a.auth-button.auth-button-vk.ui-clickable data-controller="AuthCtrl" data-action="auth" data-provider="vk" href="#" 
+
+  .player-state.loading
+    .loader.auth-player-loader
+
+  .player-state.authorized
+    .pic.player-pic
+      img src=""
+    .player-name
+    .player-position.loading
+      .player-score Баллы<br><span>0</span>
+      .player-place Место<br><span>0</span>
+      .loader.result-player-loader
+
+  .player-state.toomuch
+    .pic.player-pic
+      img src=""
+    .player-name
+    .player-position.loading
+      .player-score Баллы<br><span>0</span>
+      .player-place Место<br><span>0</span>
+      .loader.result-player-loader
+
+
+
+a.checkyourself.nav.ui-clickable data-controller="NavScreenCtrl" data-screen="test" href="#" Проверь себя

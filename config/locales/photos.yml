@@ -1,0 +1,63 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            user_uid:
+              taken: Пользователь уже участвовал в конкурсе
+            company:
+              blank: не может быть пустой
+
+    state_machines:
+      photo:
+        states:
+          awaiting_moderation: Ожидает модерации
+          published: Опубликовано
+          refused: Не прошло
+          winner: Победитель
+        events:
+          publish: Опубликовать
+          refuse: Отказать
+          make_a_winner: Выбрать победителем
+          move_back_to_published: Вернуть в опубликованные
+
+    models:
+      photo:
+        one: ""
+        few: Фото
+        many: Фото
+        other: Фото
+    attributes:
+      photo:
+        date: Дата
+        id: ID
+        uid: ID в соцсети
+        source: Источник
+        image: Фото
+        username: Юзернейм
+        fullname: Полное имя
+        state: Статус
+        address: Адрес
+        rating: Рейтинг
+        created_at: Добавлено
+        body: Содержание поста
+        name: Место
+        coords: Координаты
+        url: УРЛ
+        in: IN
+        fb: FB
+        vk: ВК
+        tw: TW
+        fb_lam: FB btn
+        vk_lam: ВК btn
+        tw_lam: TW btn
+        userpic: Юзерпик
+
+  enumerize:
+    photo:
+      source:
+        in: Instagram
+        fb: Facebook
+        vk: Вконтакте
+        tw: Twitter

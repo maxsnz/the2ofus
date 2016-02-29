@@ -1,0 +1,5 @@
+development: &development
+  adapter: postgresql
+  encoding: utf8
+  database: the2ofus
+  pool: 5

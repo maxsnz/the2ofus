@@ -1,0 +1,15 @@
+.share-board
+  .like-button.like-fb
+    .like-container
+      <div class="fb-like" data-href="http://www.the2ofus.ru" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+  .like-button.like-vk
+    #vk_like
+    coffee:
+      window.onload = ->
+        VK.Widgets.Like "vk_like", 
+          type: "mini"
+          pageUrl: 'http://www.the2ofus.ru'
+
+  .like-button.like-tw 
+    a.twitter-share-button href="https://twitter.com/intent/tweet?url=http://www.the2ofus.ru&text=love stockholm" data-counturl="http://www.the2ofus.ru" data-coun="horizontal" Tweet
+
