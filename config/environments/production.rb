@@ -79,10 +79,10 @@ The2ofus::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   Rails.configuration.ga_id = 'UA-69088337-1'
-  Rails.configuration.vk_id = '5114156'
-  Rails.configuration.vk_secret = 'zFSiKaZg0PXMDaFKUMyH'
-  Rails.configuration.fb_id = '1721977504688790'
-  Rails.configuration.fb_secret = 'bcdbbb4f96b796dca7da2a8582c28d0a'
+  Rails.configuration.vk_id = '5328511'
+  Rails.configuration.vk_secret = 'PvUWepPPjH8y4Xk7xyjP'
+  Rails.configuration.fb_id = '1522511088050633'
+  Rails.configuration.fb_secret = 'ebe7dab07f70703384a5da2a6ea2a38c'
 
   config.react.variant = :production
 end

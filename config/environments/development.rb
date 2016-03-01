@@ -33,11 +33,11 @@ The2ofus::Application.configure do
   # end
 
   Rails.configuration.ga_id = 'UA-74410761-1'
-  Rails.configuration.vk_id = ''
-  Rails.configuration.vk_secret = ''
-  Rails.configuration.fb_id = ''
-  Rails.configuration.fb_secret = ''
-  Rails.configuration.fb_access_token = ''
+  Rails.configuration.vk_id = '5328505'
+  Rails.configuration.vk_secret = 't9nNI2N7Jf0Ib26tP8TG'
+  Rails.configuration.fb_id = '138198596570030'
+  Rails.configuration.fb_secret = '7031a77de59086c9064de44eb0624c36'
+  # Rails.configuration.fb_access_token = ''
 
 
 

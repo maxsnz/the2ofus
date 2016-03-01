@@ -1,7 +1,7 @@
 ActiveAdmin.register Photo do
   actions :index, :show, :edit, :update
 
-  filter :date
+  filter :posted_at
   filter :source, as: :select, collection: proc { Photo.source.options }
   filter :uid
   filter :username
@@ -13,7 +13,7 @@ ActiveAdmin.register Photo do
     redirect_to collection_path
   end
 
-  config.sort_order = "created_at_desc"
+  config.sort_order = "posted_at_desc"
   config.per_page = 50
 
   scope(:awaiting_moderation, :default => true) do |photos|
@@ -29,17 +29,18 @@ ActiveAdmin.register Photo do
   end
 
   index :download_links => false do
-    sources_hash = Like::SOURCES.inject({}) { |memo, source| memo.merge({ source.to_sym => false })}
+    # sources_hash = Like::SOURCES.inject({}) { |memo, source| memo.merge({ source.to_sym => false })}
     selectable_column
     {
       id: :id,
-      date: false,
+      posted_at: :posted_at,
       source: false,
       image: false,
-      created_at: :created_at,
+      username: false,
+      body: false,
       state: false,
       rating: :rating,
-    }.merge(sources_hash).each do |name, sortable|
+    }.each do |name, sortable|
       column name, sortable: sortable do |photo|
         photo.decorate.send(name)
       end
@@ -54,9 +55,9 @@ ActiveAdmin.register Photo do
       (%i{
         id
         uid
-        date
+        posted_at
         source
-        name
+        
         state
         username
         fullname
@@ -66,7 +67,7 @@ ActiveAdmin.register Photo do
         url
         created_at
         rating
-       } + Like::SOURCES.map(&:to_sym)).each do |name|
+       }).each do |name|
         row(name) do |photo|
           photo.decorate.send(name)
         end
@@ -86,8 +87,8 @@ ActiveAdmin.register Photo do
   controller do
     include PermitConcern
 
-    def scoped_collection
-      super.includes(:likes)
-    end
+    # def scoped_collection
+    #   super.includes(:likes)
+    # end
   end
 end

@@ -14,7 +14,6 @@ class CreateFacebook
 
     unless photo.persisted?
       photo.src              = post["post_img"]
-      photo.remote_image_url = photo.src
       photo.url              = post["post_url"]
       photo.user_uid         = post["user_id"]
 

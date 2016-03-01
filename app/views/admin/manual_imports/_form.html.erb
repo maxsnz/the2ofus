@@ -1,0 +1,12 @@
+<%= simple_form_for [:admin, resource] do |f| %>
+  <%= f.input :urls, as: :text %>
+  <%= render "_/buttons", f: f, delete: false, back_url: collection_url %>
+
+  <% if resource.results.present? %>
+    <ul class="urls">
+      <% resource.results.each do |url, status| %>
+        <li class="<%= status ? "url-green" : "url-red" %>"><%= url %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

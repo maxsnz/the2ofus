@@ -12,13 +12,15 @@ class CreateInstagram
 
     unless photo.persisted?
       photo.src              = attrs.images.standard_resolution.url
-      photo.remote_image_url = photo.src
+      photo.thumb            = attrs.images.thumbnail.url
       photo.url              = attrs.link
       photo.user_uid         = attrs.user.id
       photo.username         = attrs.user.username
       photo.fullname         = RemoveEmojis.call(attrs.user.full_name)
       photo.userpic          = attrs.user.profile_picture
       photo.body             = RemoveEmojis.call(attrs.caption.try(:text))
+      photo.state            = Photo::AWAITING_MODERATION
+      photo.posted_at        = DateTime.strptime(attrs.created_time, '%s')
       photo.save
     end
 

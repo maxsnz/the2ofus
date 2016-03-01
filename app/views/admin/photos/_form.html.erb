@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, resource] do |f| %>
+  <%= f.input :body %>
+
+  <%= f.error :user_uid %>
+
+  <%= render "_/buttons", f: f, delete: false %>
+<% end %>

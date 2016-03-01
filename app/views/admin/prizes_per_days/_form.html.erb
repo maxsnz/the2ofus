@@ -1,0 +1,5 @@
+<%= simple_form_for [:admin, resource] do |f| %>
+  <%= f.input :posted_at %>
+  <%= f.input :n %>
+  <%= render "_/buttons", f: f %>
+<% end %>

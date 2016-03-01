@@ -1,0 +1,5 @@
+<%= simple_form_for [:admin, resource] do |f| %>
+  <%= f.input :city, prompt: false, as: :select, collection: City.all %>
+  <%= f.input :n %>
+  <%= render "_/buttons", f: f, delete: false %>
+<% end %>

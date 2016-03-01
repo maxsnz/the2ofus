@@ -15,7 +15,6 @@ class CreateVkontakte
 
     unless photo.persisted?
       photo.src              = post["attachments"].find{|a| a["type"] == "photo"}["photo"]["photo_604"]
-      photo.remote_image_url = photo.src
       photo.url              = "http://vk.com/#{user["screen_name"]}?w=wall#{uid}"
       photo.user_uid         = user["id"]
       photo.username         = user["screen_name"]

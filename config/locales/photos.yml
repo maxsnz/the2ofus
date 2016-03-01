@@ -30,7 +30,7 @@ ru:
         other: Фото
     attributes:
       photo:
-        date: Дата
+        posted_at: Дата публикации
         id: ID
         uid: ID в соцсети
         source: Источник

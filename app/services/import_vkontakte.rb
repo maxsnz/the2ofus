@@ -5,6 +5,7 @@ class ImportVkontakte
 
   def initialize(options = {})
     @tag = options.delete(:tag)
+    @mindate = options.delete(:mindate)
     @options = options
   end
 
@@ -15,13 +16,16 @@ class ImportVkontakte
       return if resp['error'].present?
 
       data = resp["response"]
+      puts data
 
       data["items"].each do |attrs|
         valid?(attrs) && CreateVkontakte.call(attrs, data["profiles"].find {|p| p["id"] == attrs["owner_id"]})
       end
 
-      next_from = data["next_from"]
-      next_from.presence && ImportVkontakte.call(options.merge(start_from: next_from, tag: tag))
+      # if (DateTime.strptime(response.last.date, '%s') > @mindate.to_date)
+      #   next_from = data["next_from"]
+      #   next_from.presence && ImportVkontakte.call(options.merge(start_from: next_from, tag: tag))
+      # end
 
       true
     rescue JSON::ParserError
@@ -32,6 +36,6 @@ class ImportVkontakte
   private
 
   def valid?(attrs)
-    attrs["post_type"] == "post" && attrs["owner_id"] > 0 && Array.wrap(attrs["attachments"]).any? { |a| a["type"] == "photo" }
+    (DateTime.strptime(attrs.date, '%s') > @mindate.to_date) && attrs["post_type"] == "post" && attrs["owner_id"] > 0 && Array.wrap(attrs["attachments"]).any? { |a| a["type"] == "photo" }
   end
 end

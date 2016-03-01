@@ -43,7 +43,7 @@ class Photo < ActiveRecord::Base
   scope :winners,             -> { with_state(WINNER) }
   scope :refused,             -> { with_state(REFUSED) }
 
-  scope :feed, -> { visible.where("date<=?", Date.today).order("date desc, id") }
+  scope :feed, -> { visible.where("posted_at<=?", Date.today).order("posted_at desc, id") }
 
   SOURCES.each do |source|
     scope source, -> { where(source: source) }
@@ -54,11 +54,11 @@ class Photo < ActiveRecord::Base
   # validates_uniqueness_of :uid, scope: :source, on: :create
 
 
-  validates_presence_of :date, on: :update, if: :published?
+  validates_presence_of :posted_at, on: :update, if: :published?
 
   def as_json(options = {})
     attributes.slice(*%w{id name userpic src rating lat lon body}).merge({
-      date: I18n.l(date, format: :short),
+      posted_at: I18n.l(posted_at, format: :short),
       username: fullname.presence || username,
       winner: winner?,
       url: PhotoUrl.call(self, host: options[:host]),
