@@ -10,7 +10,6 @@ class CreateFacebook
   def call
     photo = Photo.find_or_initialize_by uid: post["post_id"], source: Photo::FACEBOOK
 
-    likes = post["post_likes"].to_i
 
     unless photo.persisted?
       photo.src              = post["post_img"]
@@ -23,7 +22,7 @@ class CreateFacebook
       photo.userpic  = "https://graph.facebook.com/#{username}/picture"
       photo.fullname = RemoveEmojis.call(post['user_name'])
       photo.body     = RemoveEmojis.call(post["post_content"])
-      photo.fb_likes = likes
+
       photo.save
     end
 

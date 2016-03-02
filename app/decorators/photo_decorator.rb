@@ -17,7 +17,8 @@ class PhotoDecorator < Draper::Decorator
   end
 
   def image
-    h.link_to_unless_current(h.image_tag(model.thumb, :size => '100x100'), h.resource_path(model))
+    h.link_to_unless_current(h.image_tag(model.thumb, :size => '100x100'), model.url, target: "_blank")
+    # h.resource_path(model)
   end
 
   def userpic
@@ -25,11 +26,11 @@ class PhotoDecorator < Draper::Decorator
   end
 
   def url
-    h.link_to(model.url, model.url)
+    h.link_to(model.url, model.url, target: "_blank")
   end
 
   def username
-    model.username
+    h.link_to(model.username, 'http://vk.com/'+model.username, target: "_blank")
   end
 
   def body

@@ -11,21 +11,28 @@ class ImportVkontakte
 
   def call
     begin
-      resp = VkApi.get "/newsfeed.search", query: {q: "##{tag}", start_time: 1.week.ago.to_i, extended: 1, fields: "photo_50", count: 200}.merge(options)
+      resp = VkApi.get "/newsfeed.search", query: {q: "##{tag} has:photo", extended: 1,  fields: "screen_name, photo_604, photo_100", count: 200}.merge(options) # , start_time: 1.day.ago.to_i,
 
       return if resp['error'].present?
 
       data = resp["response"]
-      puts data
+
 
       data["items"].each do |attrs|
-        valid?(attrs) && CreateVkontakte.call(attrs, data["profiles"].find {|p| p["id"] == attrs["owner_id"]})
+        puts attrs['id']
+        if valid?(attrs) 
+          if attrs["owner_id"] > 0
+            CreateVkontakte.call(attrs, data["profiles"].find {|p| p["id"] == attrs["owner_id"]})
+          else
+            CreateVkontakte.call(attrs, data["groups"].find {|p| p["id"] == attrs["owner_id"].abs})
+          end
+        end
       end
 
-      # if (DateTime.strptime(response.last.date, '%s') > @mindate.to_date)
-      #   next_from = data["next_from"]
-      #   next_from.presence && ImportVkontakte.call(options.merge(start_from: next_from, tag: tag))
-      # end
+      if (DateTime.strptime(data["items"].last['date'].to_s, '%s') > @mindate.to_date)
+        next_from = data["next_from"]
+        next_from.presence && ImportVkontakte.call(options.merge(start_from: next_from, tag: tag))
+      end
 
       true
     rescue JSON::ParserError
@@ -36,6 +43,8 @@ class ImportVkontakte
   private
 
   def valid?(attrs)
-    (DateTime.strptime(attrs.date, '%s') > @mindate.to_date) && attrs["post_type"] == "post" && attrs["owner_id"] > 0 && Array.wrap(attrs["attachments"]).any? { |a| a["type"] == "photo" }
+    # выключена проверка на группу (attrs["owner_id"] > 0) - если меньше нуля, то группа
+    # (DateTime.strptime(attrs['date'].to_s, '%s') > @mindate.to_date) && attrs["post_type"] == "post" && attrs["owner_id"] > 0 && Array.wrap(attrs["attachments"]).any? { |a| a["type"] == "photo" }
+    (DateTime.strptime(attrs['date'].to_s, '%s') > @mindate.to_date) && attrs["post_type"] == "post" && Array.wrap(attrs["attachments"]).any? { |a| a["type"] == "photo" }
   end
 end
