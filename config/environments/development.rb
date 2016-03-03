@@ -41,5 +41,5 @@ The2ofus::Application.configure do
 
 
 
-  config.react.variant = :development
+  config.react.addons = true
 end

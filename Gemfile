@@ -26,6 +26,7 @@ gem 'puma'
 gem 'mini_magick'
 
 gem 'react-rails', '~> 1.6.0'
+gem 'sprockets-coffee-react'
 
 gem 'enumerize'
 gem 'emoji_data'

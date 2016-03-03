@@ -21,5 +21,12 @@ The2ofus::Application.routes.draw do
   #   end
   # end
 
+  namespace :api, defaults: { format: :json } do
+    resources :photos, only: :index
+    # resources :facebook_imports, only: :create
+  end
+
+  resources :photos, only: :show
+
   ActiveAdmin.routes(self)
 end

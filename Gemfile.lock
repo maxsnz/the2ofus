@@ -71,6 +71,8 @@ GEM
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
+    coffee-react (3.4.0)
+      execjs
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -243,6 +245,11 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sprockets-coffee-react (3.4.1)
+      coffee-react (>= 3.4.0)
+      coffee-script
+      sprockets
+      tilt
     sprockets-media_query_combiner (0.0.8)
       sass-media_query_combiner (~> 0.0.4)
       sprockets (~> 2.1)
@@ -287,6 +294,7 @@ DEPENDENCIES
   settingslogic
   simple_form
   slim-rails
+  sprockets-coffee-react
   sprockets-media_query_combiner
   state_machine
   uglifier

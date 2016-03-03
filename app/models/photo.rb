@@ -56,14 +56,24 @@ class Photo < ActiveRecord::Base
 
   validates_presence_of :posted_at, on: :update, if: :published?
 
+  # def as_json(options = {})
+  #   attributes.slice(*%w{id name userpic src rating body}).merge({
+  #     id: id,
+  #     posted_at: I18n.l(posted_at, format: :short),
+  #     username: fullname.presence || username,
+  #     userpic: userpic,
+  #     # winner: winner?,
+  #     thumb: thumb || options[:view_context].asset_path("thumb_deleted.jpg"),
+  #     src: src || options[:view_context].asset_path("full_deleted.jpg"),
+  #     url: url
+  #   })
+  # end
+
   def as_json(options = {})
-    attributes.slice(*%w{id name userpic src rating lat lon body}).merge({
-      posted_at: I18n.l(posted_at, format: :short),
+    attributes.slice(*%w{id name src}).merge({
+      id: id,
       username: fullname.presence || username,
-      winner: winner?,
-      url: PhotoUrl.call(self, host: options[:host]),
-      image: image.thumb.url || options[:view_context].asset_path("full_deleted.jpg"),
-      link: url
+      src: src || options[:view_context].asset_path("full_deleted.jpg")
     })
   end
 

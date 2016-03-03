@@ -1,12 +1,12 @@
 ru:
   meta:
     _defaults:
-      og:title: '#правильныйофис'
+      og:title: '#the2ofus'
       og:type: article
       og:image: sharing.png
-      og:site_name: '#правильныйофис'
-      og:description: Покажи, что твой офис — правильный, и выиграй запас Velle для себя и коллег.
+      og:site_name: '#the2ofus'
+      og:description: Our cool description
 
     photos:
       show:
-        og:description: Это — самый правильный офис дня. Покажи свой и выиграй запас Velle для себя и коллег
+        og:description: Our cool description
