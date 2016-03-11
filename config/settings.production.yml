@@ -4,6 +4,7 @@ ga:
 facebook:
   id: 1522511088050633
   secret: ebe7dab07f70703384a5da2a6ea2a38c
+  access_token: 1089596984398781|qnjDGhN9FkD-MSOkbXZeNnQ8iF8
   options:
     scope: 'email'
     info_fields: 'name,email'
