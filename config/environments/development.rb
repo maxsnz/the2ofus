@@ -31,15 +31,29 @@ The2ofus::Application.configure do
   # config.assets.configure do |env|
   #   env.cache = ActiveSupport::Cache::FileStore.new('/mnt/tmp')
   # end
+  # Rails.configuration.mysettings = {}
+  # Rails.configuration.mysettings['ga'] = {}
+  # Rails.configuration.mysettings['ga']['id'] = 'UA-74410761-1'
+  
+  # Rails.configuration.mysettings['facebook'] = {}
+  # Rails.configuration.mysettings['facebook']['id'] = '138198596570030'
+  # Rails.configuration.mysettings['facebook']['secret'] = '7031a77de59086c9064de44eb0624c36'
+  # Rails.configuration.mysettings['facebook']['options'] = {}
+  # Rails.configuration.mysettings['facebook']['options']['scope'] = 'email'
+  # Rails.configuration.mysettings['facebook']['options']['info_fields'] = 'name,email'
 
-  Rails.configuration.ga_id = 'UA-74410761-1'
-  Rails.configuration.vk_id = '5328505'
-  Rails.configuration.vk_secret = 't9nNI2N7Jf0Ib26tP8TG'
-  Rails.configuration.fb_id = '138198596570030'
-  Rails.configuration.fb_secret = '7031a77de59086c9064de44eb0624c36'
-  # Rails.configuration.fb_access_token = ''
+  # Rails.configuration.mysettings['vkontakte'] = {}
+  # Rails.configuration.mysettings['vkontakte']['id'] = '5328505'
+  # Rails.configuration.mysettings['vkontakte']['secret'] = 't9nNI2N7Jf0Ib26tP8TG'
+  # Rails.configuration.mysettings['vkontakte']['options'] = {}
+  # Rails.configuration.mysettings['vkontakte']['options']['scope'] = 'notify'
+
+  # Rails.configuration.mysettings['instagram'] = {}
+  # Rails.configuration.mysettings['instagram']['id'] = '0'
+  # Rails.configuration.mysettings['instagram']['secret'] = '0'
+  # Rails.configuration.mysettings['instagram']['kyes'] = false
 
 
-
-  config.react.addons = true
+  config.react.variant = :development
+  
 end

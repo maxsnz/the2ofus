@@ -1,19 +1,18 @@
 class PagesController < ApplicationController
-  after_action :allow_widget_iframe, only: [:widget, :map]
 
-  def widget
-    render layout: false
+  def gallery
+    # layout 'gallery'
+    render(:layout => "layouts/gallery")
   end
 
   def debug
+
   end
 
   def index
+
   end
 
   private
 
-  def allow_widget_iframe
-    response.headers.except! 'X-Frame-Options'
-  end
 end

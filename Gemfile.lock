@@ -66,13 +66,13 @@ GEM
     bourbon (4.2.6)
       sass (~> 3.4)
       thor (~> 0.19)
+    browserify-rails (1.1.0)
+      railties (>= 4.0.0, < 5.0)
     builder (3.2.2)
     chunky_png (1.3.5)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
-    coffee-react (3.4.0)
-      execjs
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -142,6 +142,9 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
+    jwt (1.5.1)
+    jwt-rb (0.0.2)
+      hashie
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -151,6 +154,8 @@ GEM
       multi_json
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    macaddr (1.7.1)
+      systemu (~> 2.6.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.99.1)
@@ -162,6 +167,27 @@ GEM
     multipart-post (1.2.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    oauth2 (1.1.0)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0, < 1.5.2)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (1.3.1)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.0, < 3)
+    omniauth-facebook (3.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-instagram (1.0.2)
+      omniauth (~> 1)
+      omniauth-oauth2 (~> 1)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
+    omniauth-vkontakte (1.3.6)
+      multi_json
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     pg (0.18.4)
     polyamorous (1.3.0)
       activerecord (>= 3.0)
@@ -245,11 +271,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-coffee-react (3.4.1)
-      coffee-react (>= 3.4.0)
-      coffee-script
-      sprockets
-      tilt
     sprockets-media_query_combiner (0.0.8)
       sass-media_query_combiner (~> 0.0.4)
       sprockets (~> 2.1)
@@ -258,6 +279,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     state_machine (1.2.0)
+    systemu (2.6.5)
     temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
@@ -267,6 +289,8 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuid (2.3.8)
+      macaddr (~> 1.0)
     will_paginate (3.1.0)
 
 PLATFORMS
@@ -274,6 +298,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  browserify-rails
   coffee-rails
   compass-rails
   crystalmeta
@@ -283,21 +308,26 @@ DEPENDENCIES
   httparty
   instagram (~> 1.1, >= 1.1.6)
   jquery-rails
+  jwt-rb
   koala (~> 1.10.0rc)
   mini_magick
+  omniauth
+  omniauth-facebook
+  omniauth-instagram
+  omniauth-vkontakte
   pg
   puma
   rails (~> 4.2, >= 4.2.5.1)
   rails_12factor
-  react-rails (~> 1.6.0)
+  react-rails
   sass-rails
   settingslogic
   simple_form
   slim-rails
-  sprockets-coffee-react
   sprockets-media_query_combiner
   state_machine
   uglifier
+  uuid
   will_paginate
 
 BUNDLED WITH

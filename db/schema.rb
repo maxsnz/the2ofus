@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204234139) do
+ActiveRecord::Schema.define(version: 20150902191642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id",      null: false
+    t.string   "provider",     null: false
+    t.string   "uid",          null: false
+    t.string   "access_token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "authentications", ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true, using: :btree
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "source",                 null: false
@@ -37,17 +49,10 @@ ActiveRecord::Schema.define(version: 20140204234139) do
   add_index "photos", ["source", "uid"], name: "index_photos_on_source_and_uid", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "login",      null: false
-    t.string   "email",      null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "userpic"
-    t.text     "profile"
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["login"], name: "index_users_on_login", using: :btree
 
 end

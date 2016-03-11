@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       username == "admin" && password == "Crocodile"
     end
   end
+
+  def allow_xframe
+    response.headers.except! 'X-Frame-Options'
+  end
 end
