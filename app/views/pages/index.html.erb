@@ -1,0 +1,196 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <title>Index</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <%= stylesheet_link_tag "main", media: "all" %>
+    <%= javascript_include_tag 'modernizr' %>
+    <script src="https://use.typekit.net/axt2ybv.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  </head>
+  <body>
+    <div class="preloader"></div>
+    <div class="wrapper">
+      <div class="topMenu"><span class="topMenu__item">menu</span>
+      </div>
+      <div class="menu-collapsed">
+        <nav class="menu-collapsed__nav">
+          <ul class="menu-collapsed__list">
+            <li class="menu-collapsed__item">
+              <svg width="141" height="98" viewBox="0 0 120 98" class="menu-collapsed__img">
+                <image xlink:href="<%= asset_path('main/ck.png') %>" src="<%= asset_path('main/ck.png') %>" width="141" height="98"></image>
+              </svg>
+            </li>
+            <li class="menu-collapsed__item"><a href="http://www.letu.ru/parfyumeriya/zhenskaya-parfyumeriya/calvin-klein-ck2/41800005" class="menu-collapsed__href">Купить</a></li>
+            <li class="menu-collapsed__item"><a id="menuCon" href="" class="menu-collapsed__href">Конкурсы</a></li>
+            <li class="menu-collapsed__item"><a href="#" class="menu-collapsed__href">Галерея</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="descktop">
+        <div class="container">
+          <%= image_tag("main/logo.png", :alt => "logo" , :class => "mainHeader-logo") %>
+          <div class="block">
+            <div class="mainHeader">
+              <div class="mainHeader-leftBlock__header">
+                <%= image_tag("main/left-bgr.jpg", :alt => "bgr" , :class => "mainHeader__img img-fullheight") %>
+                <div class="mainHeader-leftBlock__g">
+                  <div class="fair">
+                    <div>Зажги в паре</div>
+                  </div>
+                  <div class="fell topstar2">
+                    <div>Возбуждай</div>
+                    <div>уникальные чувства!</div>
+                  </div>
+                </div>
+                <%= image_tag("main/girls.jpg", :alt => "girls" , :class => "mainHeader__img") %>
+                <%= image_tag("main/girls2.jpg", :alt => "girls" , :class => "mainHeader__img") %>
+              </div>
+              <div class="mainHeader-rightBlock__header">
+                <%= image_tag("main/right-bgr.jpg", :alt => "bgr" , :class => "mainHeader__img img-fullheight circle1") %>
+                <div id="Task" class="blockTask circle1">
+                  <ul class="social__list">
+                    <li class="social__item"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.protocol + request.host_with_port %>" target="_blank" class="social__href social__fb"><span class="text-hide">Facebook</span></a></li>
+                    <li class="social__item"><a href="http://twitter.com/intent/tweet?text=<%= request.protocol + request.host_with_port %>" target="_blank" class="social__href social__tw"><span class="text-hide">Twitter</span></a></li>
+                    <li class="social__item"><a href="http://vk.com/share.php?url=<%= request.protocol + request.host_with_port %>" target="_blank" class="social__href social__vk"><span class="text-hide">Vk</span></a></li>
+                  </ul>
+                  <div class="blockTask__pre">Отожги в конкурсе  — и получи провокационный аромат ck2</div>
+                  <div class="task">
+                    <div class="task__title">ЗАДАНИЕ:</div>
+                    <div class="task_dscr">
+                      <div>Подбей его или её на безбашенный поступок.</div>
+                      <div>Сломай стереотипы об отношениях. Заяви о том, что чувствуешь ты!</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="Rule" class="blockRule circle1">
+                  <ul class="rule__list">
+                    <li class="rule__item">
+                      <div class="rule-title">Сфотографируй</div>
+                      <div class="rule-descr">Покажи вашу особенную связь с нового ракурса. На фото вы должны быть вдвоём. </div>
+                    </li>
+                    <li class="rule__item">
+                      <div class="rule-title">Опубликуй</div>
+                      <div id="dtask" class="rule-descr">Запости фото с хэштегом #the2ofus  и геометкой. Собирай лайки и зажигай!</div>
+                    </li>
+                  </ul><a href="#" class="full-rule">Полные правила</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="block">
+            <div class="mainHeader-rightBlock">
+              <div class="mainHeader-rightBlock__content circle3">
+                <div class="mainHeader-rightBlock__title">Новый аромат для двоих </div>
+                <div class="tagImg">#the2ofus</div>
+                <div class="buttons"><a href="http://www.letu.ru/parfyumeriya/zhenskaya-parfyumeriya/calvin-klein-ck2/41800005" data-text="Купить" class="btn-black cta">Купить</a></div>
+                <div class="buttons">
+                  <button id="Dbtncon" data-text="Конкурс" class="btn-black cta">Конкурс</button>
+                </div>
+              </div>
+              <div class="mainHeader-rightBlock__content circle4">
+                <%= image_tag("main/boy.jpg", :alt => "boys" , :class => "circle4") %>
+              </div>
+            </div>
+            <div class="mainHeader-leftBlock mainHeader-leftBlock__video"><a href="#" class="video-href videopopup">
+              <%= image_tag("main/video.jpg", :alt => "video" , :class => "video-href__video") %>
+            </a></div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile">
+        <div class="container__mobile">
+          <div class="mobile-header">
+            <div class="mobile-header__left">
+              <div class="mobile-header__img">
+                <%= image_tag("main/left-bgr__mobile.jpg", :alt => "bgr") %>
+              </div>
+            </div>
+            <div class="mobile-header__right">
+              <div class="mobile-header__img">
+                <%= image_tag("main/right-bgr__mobile.jpg", :alt => "bgr") %>
+              </div>
+            </div>
+          </div>
+          <div class="container-text">
+            <div class="mobile-header__logo">
+              <%= image_tag("main/logo.png", :alt => "logo" , :class => "mainHeader-logo") %>
+            </div>
+            <div class="mobile-header__title">Новый аромат для двоих</div>
+            <div class="tagImg mobile-tagImg">#the2ofus</div>
+            <div class="mobile-buttons">
+              <form action="http://www.letu.ru/parfyumeriya/zhenskaya-parfyumeriya/calvin-klein-ck2/41800005">
+                <button data-text="Купить" type="submit" class="btn-black cta">Купить</button>
+              </form>
+            </div>
+            <div class="mobile-buttons">
+              <button id="Mbtncon" data-text="Конкурс" class="btn-black cta">Конкурс</button>
+            </div>
+            <div class="mobileBlock__video"><a href="#" class="video-href video-href__mobile videopopup">
+              <%= image_tag("main/video.jpg", :alt => "video" , :class => "video-href__video") %>
+            </a></div>
+            <div class="mobile-fell">
+              <div>Возбуждай</div>
+              <div>уникальные</div>
+              <div>чувства!</div>
+            </div>
+            <div class="mobile-blockimg">
+              <%= image_tag("main/boy.jpg", :alt => "boys") %>
+            </div>
+            <div class="mobile-blockimg">
+              <%= image_tag("main/girls.jpg", :alt => "girls" , :class => "mainHeader__img") %>
+            </div>
+          </div>
+          <div id="mtask" class="blockTask__mobile">
+            <ul class="social__list">
+              <li class="social__item"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.protocol + request.host_with_port %>" target="_blank" class="social__href social__fb"><span class="text-hide">Facebook</span></a></li>
+              <li class="social__item"><a href="http://twitter.com/intent/tweet?text=<%= request.protocol + request.host_with_port %>" target="_blank" class="social__href social__tw"><span class="text-hide">Twitter</span></a></li>
+              <li class="social__item"><a href="http://vk.com/share.php?url=<%= request.protocol + request.host_with_port %>" target="_blank" class="social__href social__vk"><span class="text-hide">Vk</span></a></li>
+            </ul>
+            <div class="blockTask__pre">Отожги в конкурсе  — и получи провокационный аромат ck2</div>
+            <div class="task">
+              <div class="task__title">ЗАДАНИЕ:</div>
+              <div class="task_dscr__mobile">
+                <div>Подбей его или её на безбашенный поступок.</div>
+                <div>Сломай стереотипы об отношениях. Заяви о том, что чувствуешь ты!</div>
+              </div>
+            </div>
+          </div>
+          <div class="blockRule__mobile">
+            <ul class="rule__list">
+              <li class="Mrule__item">
+                <div class="rule-title">Сфотографируй</div>
+                <div class="rule-descr">Покажи вашу особенную связь с нового ракурса. На фото вы должны быть вдвоём. </div>
+              </li>
+              <li class="Mrule__item">
+                <div class="rule-title">Опубликуй</div>
+                <div class="rule-descr">Запости фото с хэштегом #the2ofus  и геометкой. Собирай лайки и зажигай!</div>
+              </li>
+            </ul><a href="#" class="full-rule">Полные правила</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-ht">#the2ofus</div>
+        <div class="footer-share">
+          <div class="likely likely-big">
+            <div class="vkontakte">Поделиться</div>
+            <div class="facebook">Поделиться</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="ck2" class="popupContact">
+      <div class="bcontent">
+        <iframe id="youtube" src="https://www.youtube.com/embed/i9eElVMMhRg?rel=0&amp;amp;showinfo=0" allowfullscreen="allowfullscreen" class="ckvideo"></iframe>
+      </div>
+    </div>
+    <%= javascript_include_tag 'main' %>
+  </body>
+</html>
