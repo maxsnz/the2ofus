@@ -1,16 +1,16 @@
 ga:
-  id: UA-74410761-1
+  id: UA-69088337-1
 
 facebook:
-  id: 138198596570030
-  secret: 7031a77de59086c9064de44eb0624c36
+  id: 1522511088050633
+  secret: ebe7dab07f70703384a5da2a6ea2a38c
   options:
     scope: 'email'
     info_fields: 'name,email'
 
 vkontakte:
-  id: 5328505
-  secret: t9nNI2N7Jf0Ib26tP8TG
+  id: 5328511
+  secret: PvUWepPPjH8y4Xk7xyjP
   options:
     scope: 'notify'
 
