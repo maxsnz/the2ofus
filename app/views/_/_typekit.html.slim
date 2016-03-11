@@ -1,0 +1,15 @@
+- if Rails.env.production? 
+  script src="https://use.typekit.net/axt2ybv.js"
+  javascript:
+    try{Typekit.load({ async: true });}catch(e){}
+- if Rails.env.development? 
+  css:
+    @font-face {
+      font-family: 'CKStencil';
+      src:  url("#{asset_path('CKStencil/CKStencil.eot')}");
+      src:  url("#{asset_path('CKStencil/CKStencil.eot')}") format("embedded-opentype"), 
+            url("#{asset_path('CKStencil/CKStencil.woff2')}") format("woff2"), 
+            url("#{asset_path('CKStencil/CKStencil.woff')}") format("woff"), 
+            url("#{asset_path('CKStencil/CKStencil.ttf')}") format("truetype"), 
+            url("#{asset_path('CKStencil/CKStencil.svg#CKStencil')}") format("svg"); 
+    }

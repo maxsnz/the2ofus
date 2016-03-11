@@ -8,7 +8,7 @@ html lang="ru-RU"
   = csrf_meta_tags 
   = yield :head 
   = stylesheet_link_tag "gallery", media: "all"
-  
+  = render("_/typekit")
   = render("_/google_analytics") if Rails.env.production? 
   = render("_/yandex_metrica") if Rails.env.production? 
 

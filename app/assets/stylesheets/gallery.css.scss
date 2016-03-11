@@ -1,11 +1,11 @@
 @import "compass/css3";
 @import "_/mixins";
+@import "_/fonts";
 
-@include setfontface('futurafuturisc');
-$font: 'futurafuturisc', sans-serif;
+$futura: 'futura-pt', 'Myriad Pro Regular', sans-serif;
 
 body {
-  font: 14px/14px $font;
+  font: 14px/14px $futura;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 .g-item__top {height: 100px; width: 100%;}
 .g-item__image {position: relative; right: 35px;}
-.g-item__username {color:#fff; font:16px/88px $font; padding-left: 30px;}
+.g-item__username {color:#fff; font:16px/88px $futura; padding-left: 30px;}
 
 .g-item__like {
   background: inline-image('base64/g-item__like.png') 0 0 no-repeat;

@@ -9,9 +9,7 @@ html lang="ru-RU"
   = yield :head 
   = stylesheet_link_tag "main", media: "all"
   = javascript_include_tag 'modernizr'
-  script src="https://use.typekit.net/axt2ybv.js"
-  javascript:
-    try{Typekit.load({ async: true });}catch(e){}
+  = render("_/typekit")
   = render("_/google_analytics") if Rails.env.production? 
   = render("_/yandex_metrica") if Rails.env.production? 
 
