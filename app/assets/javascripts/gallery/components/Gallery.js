@@ -7,14 +7,15 @@ var Gallery = React.createClass({
       return null;
     }
     return <div className="g">
-        // <div className="debug" onClick={() => this.props.onAuthProviderClick(5,6)} >click me!</div>
-        {this.props.data.map((item, index) =>
-          <GalleryItem key={index} data={item} onLikeClick={() => this.props.onLikeClick(item.id)} onAuthProviderClick={(provider) => this.props.onAuthProviderClick(item.id, provider)} />
-          // 
-        )}
-      </div>
-
-    
+      {this.props.data.map((item, index) =>
+        <GalleryItem 
+          key={index} 
+          data={item} 
+          onLikeClick={() => this.props.onLikeClick(item.id)} 
+          onAuthProviderClick={(provider) => this.props.onAuthProviderClick(item.id, provider)} 
+        />
+      )}
+    </div>
   }
 });
 
@@ -22,7 +23,10 @@ var GalleryItem = React.createClass({
   render: function() {
     return <div className="g-item">
       <div className="g-item__top">
-        <div className={'g-item__like ' + (this.props.data.liked ? 'g-item__like--liked' : '')} onClick={() => this.props.onLikeClick()} ></div>
+        <div 
+          className={'g-item__like ' + (this.props.data.liked ? 'g-item__like--liked' : '')} 
+          onClick={() => this.props.onLikeClick()} 
+        />
         <div className="g-item__username">{this.props.data.username}</div>
       </div> 
       <div className="g-item__image">
@@ -30,7 +34,10 @@ var GalleryItem = React.createClass({
       </div>
       <div className="g-item__auth-position">
         <div className={'g-item__auth ' + (this.props.data.authOpened ? 'g-item__auth--opened' : '')}>
-          <AuthPanel index={this.props.key} onAuthProviderClick={(provider) => this.props.onAuthProviderClick(provider)}  />
+          <AuthPanel 
+            index={this.props.key} 
+            onAuthProviderClick={(provider) => this.props.onAuthProviderClick(provider)}  
+          />
         </div>
       </div>
     </div>

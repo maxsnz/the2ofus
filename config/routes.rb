@@ -8,7 +8,7 @@ The2ofus::Application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :photos, only: :index
-    resource :account, only: :update
+    resources :likes, only: :create
     # resources :facebook_imports, only: :create
   end
 

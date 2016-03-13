@@ -1,3 +1,36 @@
+class Auth
+  @authorized = false
+  onCallbackPopup = undefined
+  auth_params = {}
+
+  @callbackPopupAuth = (status, options) ->
+    data = JSON.parse(options)
+    # console.log 'callbackPopupAuth', status, data
+    onCallbackPopup(status, data)
+
+  @run = (index, provider, callback) ->
+    # console.log 'auth started!', provider
+    href = '/auth/' + provider + ''
+    popupWin = window.open(href, 'Authorization', 'location,width=500,height=500,top=0')
+    popupWin.focus()
+    return new Promise((resolve, reject) ->
+      onCallbackPopup = (status, data) ->
+        if (status)
+          Auth.authorized = true
+          auth_params.token = data.token
+          auth_params.authenticity_token = $('meta[name="csrf-token"]').attr('content')
+          # auth_params.access_token = data.account.authentications[0].access_token if data.account.authentications[0].access_token
+          # auth_params.uid = data.account.authentications[0].uid if data.account.authentications[0].uid
+          resolve(data)
+        else
+          reject(data)
+      )
+
+  @getParams = (key) ->
+    return auth_params[key]
+
+window.Auth = Auth
+
 
   # validateEmail = (email) ->
   #   re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
@@ -88,23 +121,5 @@
   #   else
   #     setState('start')
 
-class Auth
 
-  @run = (provider) ->
-    console.log 'auth started!', provider
-    href = '/auth/' + provider + ''
-    popupWin = window.open(href, 'Authorization', 'location,width=500,height=500,top=0')
-    popupWin.focus()
-
-
-  @callbackPopupAuth = (status, options) ->
-    console.log 'callbackPopupAuth', status, options
-    # data = JSON.parse(options)
-    # if status
-    #   ee.emitEvent('auth_Authorized', [data])
-    # else
-    #   ee.emitEvent('auth_AuthorizedError', [data])
-
-
-window.Auth = Auth
 

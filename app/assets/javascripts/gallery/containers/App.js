@@ -9,7 +9,11 @@ class App extends Component {
     const { dispatch, data } = this.props
     return (
       <div>
-        <Gallery data={data} onLikeClick={ index => dispatch(like(index)) } onAuthProviderClick={ (index, provider) => dispatch(auth(index, provider)) } />
+        <Gallery 
+          data={data} 
+          onLikeClick={ index => dispatch(like(index)) } 
+          onAuthProviderClick={ (index, provider) => dispatch(auth(index, provider, dispatch)) } 
+        />
       </div>
     )
   }
