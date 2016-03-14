@@ -1,12 +1,12 @@
 ru:
   meta:
     _defaults:
-      og:title: 'The 2 of us'
+      og:title: 'Покажи свои отношения с нового ракурса и получи аромат от  Calvin Klein!'
       og:type: article
       og:image: share.png
       og:site_name: The2ofus
       og:description: '#the2ofus'
     
-    pages:
-      index: 
+    # pages:
+    #   index: 
 
