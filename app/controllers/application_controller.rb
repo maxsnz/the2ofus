@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   protected
-  def authenticate
+  def authenticate_basic
     authenticate_or_request_with_http_basic do |username, password|
-      username == "admin" && password == "Crocodile"
+      username == "admin" && password == "Camel"
     end
   end
 
