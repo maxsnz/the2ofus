@@ -1,21 +1,6 @@
 <div class="preloader"></div>
 <div class="wrapper">
-  <div class="topMenu"><span class="topMenu__item">menu</span>
-  </div>
-  <div class="menu-collapsed">
-    <nav class="menu-collapsed__nav">
-      <ul class="menu-collapsed__list">
-        <li class="menu-collapsed__item">
-          <svg width="141" height="98" viewBox="0 0 120 98" class="menu-collapsed__img">
-            <image xlink:href="<%= asset_path('main/ck.png') %>" src="<%= asset_path('main/ck.png') %>" width="141" height="98"></image>
-          </svg>
-        </li>
-        <li class="menu-collapsed__item"><a href="http://www.letu.ru/parfyumeriya/zhenskaya-parfyumeriya/calvin-klein-ck2/41800005" class="menu-collapsed__href" target="_blank">Купить</a></li>
-        <li class="menu-collapsed__item"><a id="menuCon" href="" class="menu-collapsed__href">Конкурс</a></li>
-<!--         <li class="menu-collapsed__item"><a href="/gallery" class="menu-collapsed__href">Галерея</a></li> -->
-      </ul>
-    </nav>
-  </div>
+  <%= render("_/menu") %>
   <div class="descktop">
     <div class="container">
       <%= image_tag("main/logo.png", :alt => "logo" , :class => "mainHeader-logo") %>

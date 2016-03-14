@@ -1,18 +1,42 @@
 @import "compass/css3";
+@import "normalize";
 @import "_/mixins";
 @import "_/fonts";
+@import "_/keyframes";
+@import "_/menu";
 
 $futura: 'futura-pt', 'Myriad Pro Regular', sans-serif;
 
 body {
   font: 14px/14px $futura;
   -webkit-font-smoothing: antialiased;
+  overflow-x:hidden;
+}
+
+.preloader {
+  position: fixed;
+  width: 0;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  height: 10px;
+  z-index: 9999;
+  // -webkit-animation: load-in 1s ease-in-out 0.2s;
+  // animation: load-in 1s ease-in-out 0.2s; 
+  @include animation(load-in, 1s, ease-in-out, 0.2s);
 }
 
 .g {
   width: 1002px; margin:0px auto;
-  padding-top: 100px;
+  padding-top: 40px; position: relative;
+  z-index: 5;
 }
+
+h1 {font: 77px/77px "CKStencil", serif; text-align: center; margin-bottom: 0;}
+.bgtext {position: absolute; z-index: 1; top:308px;width: 100%; color:#292929}
+.bgtext-left {position: relative; left:0; font: 300px/270px "CKStencil", serif; text-align: left;}
+.bgtext-right {position: relative; right:0; font: 253px/228px "CKStencil", serif; text-align: right;}
 
 .g-item {
   position: relative;
@@ -52,7 +76,18 @@ body {
   content:' '; background: inline-image('base64/g-item__auth-corner.png');
   display: block; width: 20px; height: 10px; position: absolute; bottom:-10px; right:45px;
 }
-.g-item__auth-title {line-height: 42px; margin-top: 14px; padding-left: 25px;}
-.g-item__auth-item--fb {}
-.g-item__auth-item--in {}
-.g-item__auth-item--vk {}
+.g-item__auth-title {
+  line-height: 29px; margin-top: 19px; padding-left: 25px;
+}
+.g-item__auth-item {
+  font-size:0; width: 30px; height: 30px;
+  background-position: 50% 60%;
+  background-repeat: no-repeat;
+  cursor: pointer; margin:0 14px 0;
+  opacity:0.8;
+  @include single-transition(opacity, ease, 0.2s);
+  &:hover {opacity:1;}
+}
+.g-item__auth-item--fb { margin: 0 8px 0 20px;background-image:inline-image('base64/g-item__auth-fb.png');}
+.g-item__auth-item--in {background-image:inline-image('base64/g-item__auth-insta.png');}
+.g-item__auth-item--vk {background-image:inline-image('base64/g-item__auth-vk.png');}

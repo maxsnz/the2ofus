@@ -14,7 +14,7 @@ html lang="ru-RU"
     = render("_/google_analytics") if Rails.env.production? 
     = render("_/yandex_metrica") if Rails.env.production? 
 
-  body
+  body.main-page
     = yield 
     = javascript_include_tag 'main' 
     = render :partial => '_/sharing_includes' 

@@ -2,6 +2,7 @@
 //= require jquery.bpopup
 //= require jquery.nicescroll.min
 //= require likely
+//= require menu
 
 // js
 $(document).ready(function() {
@@ -43,17 +44,7 @@ $(document).ready(function() {
 
 
 
-    // Менюшка
-    var thisit = $('.topMenu');
-    $('.topMenu').click(function(e) {
-        e.preventDefault();
-        $('.menu-collapsed').toggleClass("menu-expanded");
-        thisit.toggleClass('active');
-    });
-    $('.menu-collapsed').click(function() {
-        $('.menu-collapsed').toggleClass("menu-expanded");
-        thisit.toggleClass('active');
-    });
+
 
     // popup
     var url = $('#youtube').attr('src');

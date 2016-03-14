@@ -1,0 +1,18 @@
+@keyframes dropHeader {
+  0% {
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1; 
+  } 
+}
+
+@keyframes load-in {
+  0% {
+    width: 0; }
+  66% {
+    width: 100%;
+    opacity: 1; }
+  100% {
+    width: 100%;
+    opacity: 0; } }
