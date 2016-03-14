@@ -1,12 +1,13 @@
 ru:
   meta:
     _defaults:
-      og:title: '#the2ofus'
+      og:title: 'Покажи свои отношения с нового ракурса и получи аромат от  Calvin Klein!'
       og:type: article
-      og:image: sharing.png
-      og:site_name: '#the2ofus'
-      og:description: Our cool description
+      og:image: share.png
+      og:site_name: The2ofus
+      og:description: '#the2ofus'
+    
 
-    photos:
-      show:
-        og:description: Our cool description
+    # photos:
+    #   show:
+    #     og:description: Our cool description
