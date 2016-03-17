@@ -104,6 +104,21 @@ h1 {font: 77px/77px "CKStencil", serif; text-align: center; margin-bottom: 0;}
 .p-cross {top:31px; right:31px; position: absolute; background: inline-image('base64/p-cross.png'); width: 13px; height: 13px; cursor: pointer;}
 .p-wrapper {position: fixed; top:0;left:0; width: 100%; height: 100%;    z-index: 100;}
 .p-blacker {background: rgba(0,0,0,.4); position: absolute; top:0; left:0; width: 100%; height: 100%;}
-.p-image {width: 420px; height: 420px;}
-.p-content {}
-.p-username {}
+.p-image {
+  width: 420px; height: 420px;
+  background-size:cover;
+  background-position: 50% 50%;
+  float:left; margin-right:40px;
+}
+.p-content {float:left; width: 400px; position: relative; height:420px;}
+.p-username {font: 39px/39px $futura; margin-bottom: 30px;}
+.p-body {font:16px/19px $futura; color:#7a7a7a;}
+.p-line {width: 77px; height: 1px; background:#000; margin: 23px 0;}
+.p-rating {padding-left: 47px; font:39px/27px $futura; height: 27px; background:inline-image('base64/p-rating.png') 0 50% no-repeat;}
+.p-share {position: absolute; bottom:0;}
+.p-shareitem {
+  display: none;
+  &.p-fb {}
+  &.p-tw {}
+  &.p-vk {}
+}

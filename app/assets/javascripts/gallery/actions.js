@@ -81,7 +81,7 @@ function fetchPhoto(id) {
 
 
 export function photoClicked(id) {
-  console.log('photoClicked', id);
+  // console.log('photoClicked', id);
   return (dispatch, getState) => {
     if (shouldFetchPhoto(getState(), id)) {
       return dispatch(fetchPhoto(id)).then(() =>
@@ -95,7 +95,7 @@ export function photoClicked(id) {
 
 
 export function getMyLikes(dispatch) {
-  console.log('getMyLikes started!');
+  // console.log('getMyLikes started!');
   $.get("/api/likes", {token: Auth.getParams('token'), authenticity_token: Auth.getParams('authenticity_token')}, function(data) {
     data = getIds(data, 'photo_id');
     dispatch({type: LIKES_RECEIVED, data});
@@ -109,7 +109,7 @@ export function authclose(id) {
 
 export function auth(id, provider, dispatch) {
   Auth.run(id, provider).then(function(result) {
-    console.log(result);
+    // console.log(result);
     dispatch({type: AUTH_SUCCESS});
     dispatch({type: AUTHCLOSE});
     // dispatch({type: LIKE, id});
@@ -127,6 +127,12 @@ export function fetchAllItemsFromServer() {
     return fetch('/api/photos.json')
       .then(response => response.json())
       .then(json => dispatch({type: FETCH_ALL_ITEMS_SUCCESS,photos: formatArrayAsObject(json)}))
+      .then(response => {
+        let photo = parseInt(window.location.pathname.split('/')[2])
+        if (photo > 0) {
+          dispatch(photoClicked(photo))
+        }
+      })
       .catch(errors => dispatch({type: FETCH_ALL_ITEMS_ERROR, errors: errors}))
   };
 }

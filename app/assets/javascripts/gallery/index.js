@@ -17,9 +17,9 @@ const store = createStore(
 let rootElement = document.getElementById('root')
 
 
-store.dispatch(fetchAllItemsFromServer()).then(() =>
-  console.log(store.getState())
-);
+store.dispatch(fetchAllItemsFromServer())//.then(() =>
+  // console.log(store.getState())
+//);
 
 render(
   <Provider store={store}>

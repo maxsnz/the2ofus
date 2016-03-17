@@ -40,6 +40,17 @@ function photo(state, action) {
     return Object.assign({}, state, {
       liked: true
     });
+  case REQUEST_PHOTO:
+    return Object.assign({}, state, {
+      isLoading: true
+    });
+  case RECEIVE_PHOTO:
+    console.log(action);
+    return Object.assign({}, state, {
+      isLoading: false,
+      body: action.photo.body,
+      rating: action.photo.rating
+    });
   default:
     return state;
   }
@@ -76,11 +87,11 @@ function photos(state, action) {
       authOpened: false
     });
   case LIKE:
+  case REQUEST_PHOTO:
+  case RECEIVE_PHOTO:
     let id = action.id;
     return Object.assign({}, state, {
-      [id]: Object.assign({}, state[id], {
-        liked: true
-      })
+      [id]: photo(state[id], action)
     });
   default:
     return state;
@@ -111,14 +122,12 @@ export default function gallery(state = initialState, action) {
   case FETCH_ALL_ITEMS_ERROR:
   case LIKES_RECEIVED:
     return photos(state, action);
+  case REQUEST_PHOTO:
+  case RECEIVE_PHOTO:
   case LIKE:
     return Object.assign({}, state, {
       photos: photos(state.photos, action)
     });
-
-  case REQUEST_PHOTO:
-  case RECEIVE_PHOTO:
-    return state;
   case OPEN_PHOTO:
     return Object.assign({}, state, {
       openedPhoto: action.id
