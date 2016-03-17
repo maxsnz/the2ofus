@@ -77,6 +77,14 @@ class Photo < ActiveRecord::Base
     })
   end
 
+  def full_json(options = {})
+    attributes.slice(*%w{id name src rating body }).merge({
+      id: id,
+      username: fullname.presence || username,
+      src: src || options[:view_context].asset_path("full_deleted.jpg")
+    })
+  end
+
   def winner_count
     self.class.winners.where(user_uid: user_uid).count
   end

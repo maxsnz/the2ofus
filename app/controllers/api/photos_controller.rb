@@ -1,9 +1,11 @@
 class Api::PhotosController < Api::BaseController
-  def index
-    @photos = Photo.feed
+  def show
+    photo = Photo.find(params[:id]).full_json
+    render_json(photo)
+  end
 
-    render_json({
-      photos: @photos.as_json(view_context: view_context, host: request.host)
-    })
+  def index
+    photos = Photo.visible.all
+    render_json(photos)
   end
 end

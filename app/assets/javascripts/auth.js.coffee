@@ -8,7 +8,7 @@ class Auth
     # console.log 'callbackPopupAuth', status, data
     onCallbackPopup(status, data)
 
-  @run = (index, provider, callback) ->
+  @run = (index, provider) ->
     # console.log 'auth started!', provider
     href = '/auth/' + provider + ''
     popupWin = window.open(href, 'Authorization', 'location,width=500,height=500,top=0')

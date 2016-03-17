@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { like, auth } from '../actions'
+import { like, auth, photoClicked, closePhoto } from '../actions'
 import Gallery from '../components/Gallery'
+import Photo from '../components/Photo'
 
 
 class App extends Component {
@@ -10,9 +11,15 @@ class App extends Component {
     return (
       <div>
         <Gallery 
-          data={data} 
+          authOpened={data.authOpened}
+          data={data.photos} 
           onLikeClick={ index => dispatch(like(index)) } 
+          onPhotoClick={ index => dispatch(photoClicked(index)) }
           onAuthProviderClick={ (index, provider) => dispatch(auth(index, provider, dispatch)) } 
+        />
+        <Photo 
+          data={data.photos[data.openedPhoto]} 
+          onCloseClick={() => dispatch(closePhoto())}
         />
       </div>
     )
@@ -21,7 +28,7 @@ class App extends Component {
 
 function select(state) {
   return {
-    data:state.photos.items
+    data:state.gallery
   }
 }
 

@@ -7,12 +7,15 @@ var Gallery = React.createClass({
       return null;
     }
     return <div className="g">
-      {this.props.data.map((item, index) =>
+      {Object.keys(this.props.data).map(id => 
+      // {this.props.data.map((item, id) =>
         <GalleryItem 
-          key={index} 
-          data={item} 
-          onLikeClick={() => this.props.onLikeClick(item.id)} 
-          onAuthProviderClick={(provider) => this.props.onAuthProviderClick(item.id, provider)} 
+          key={id} 
+          data={this.props.data[id]} 
+          authOpened={(parseInt(this.props.authOpened)==id)}
+          onLikeClick={() => this.props.onLikeClick(id)} 
+          onPhotoClick={() => this.props.onPhotoClick(id)} 
+          onAuthProviderClick={(provider) => this.props.onAuthProviderClick(id, provider)} 
         />
       )}
     </div>
@@ -29,11 +32,11 @@ var GalleryItem = React.createClass({
         />
         <div className="g-item__username">{this.props.data.username}</div>
       </div> 
-      <div className="g-item__image">
+      <div className="g-item__image" onClick={() => this.props.onPhotoClick()}>
         <img width="274" src={this.props.data.src} />
       </div>
       <div className="g-item__auth-position">
-        <div className={'g-item__auth ' + (this.props.data.authOpened ? 'g-item__auth--opened' : '')}>
+        <div className={'g-item__auth ' + (this.props.authOpened ? 'g-item__auth--opened' : '')}>
           <AuthPanel 
             index={this.props.key} 
             onAuthProviderClick={(provider) => this.props.onAuthProviderClick(provider)}  

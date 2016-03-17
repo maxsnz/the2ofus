@@ -7,8 +7,8 @@ The2ofus::Application.routes.draw do
   get :gallery, to: 'pages#gallery'
 
   namespace :api, defaults: { format: :json } do
-    resources :photos, only: :index
-    resources :likes, only: :create
+    resources :photos, only: [:index, :show]
+    resources :likes, only: [:create, :index]
     # resources :facebook_imports, only: :create
   end
 

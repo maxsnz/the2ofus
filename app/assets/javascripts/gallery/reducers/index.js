@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import photos from './photos';
+import gallery from './gallery';
 import authorization from './authorization';
 
 const rootReducer = combineReducers({
-  photos, authorization
+  gallery, authorization
 })
 
 export default rootReducer

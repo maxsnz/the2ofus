@@ -91,3 +91,19 @@ h1 {font: 77px/77px "CKStencil", serif; text-align: center; margin-bottom: 0;}
 .g-item__auth-item--fb { margin: 0 8px 0 20px;background-image:inline-image('base64/g-item__auth-fb.png');}
 .g-item__auth-item--in {background-image:inline-image('base64/g-item__auth-insta.png');}
 .g-item__auth-item--vk {background-image:inline-image('base64/g-item__auth-vk.png');}
+
+
+.p {
+  position: absolute; width: 1000px; height: 580px; 
+  margin:-290px 0 0 -500px;
+  box-sizing:border-box; padding:70px;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+}
+.p-cross {top:31px; right:31px; position: absolute; background: inline-image('base64/p-cross.png'); width: 13px; height: 13px; cursor: pointer;}
+.p-wrapper {position: fixed; top:0;left:0; width: 100%; height: 100%;    z-index: 100;}
+.p-blacker {background: rgba(0,0,0,.4); position: absolute; top:0; left:0; width: 100%; height: 100%;}
+.p-image {width: 420px; height: 420px;}
+.p-content {}
+.p-username {}

@@ -1,5 +1,6 @@
 class Api::LikesController < Api::BaseController
-  before_filter :authenticate!, only: :create
+  before_filter :authenticate!, only: [:create, :index]
+  # before_filter :authenticate!, only: :show
 
   def create
     photo = Photo.find(params[:photo_id])
@@ -16,6 +17,11 @@ class Api::LikesController < Api::BaseController
       render_json({ ok: false, errors: 'already liked' })
     end
 
+  end
+
+  def index
+    @likes = Like.all.where(user: @current_user)
+    render_json(@likes)
   end
 
   def update_photo_rating(photo)
