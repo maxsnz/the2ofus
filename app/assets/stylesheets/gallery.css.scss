@@ -115,9 +115,9 @@ h1 {font: 77px/77px "CKStencil", serif; text-align: center; margin-bottom: 0;}
 .p-body {font:16px/19px $futura; color:#7a7a7a;}
 .p-line {width: 77px; height: 1px; background:#000; margin: 23px 0;}
 .p-rating {padding-left: 47px; font:39px/27px $futura; height: 27px; background:inline-image('base64/p-rating.png') 0 50% no-repeat;}
-.p-share {position: absolute; bottom:0;}
+.p-share {position: absolute; bottom:0;display: none;}
 .p-shareitem {
-  display: none;
+  
   &.p-fb {}
   &.p-tw {}
   &.p-vk {}
