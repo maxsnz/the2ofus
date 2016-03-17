@@ -54,6 +54,7 @@ function openPhoto(id) {
 }
 
 export function closePhoto(id) {
+  window.history.pushState({},"", '/gallery');
   return {
     type: CLOSE_PHOTO
   };
@@ -82,6 +83,7 @@ function fetchPhoto(id) {
 
 export function photoClicked(id) {
   // console.log('photoClicked', id);
+  window.history.pushState({},"", '/gallery/'+id);
   return (dispatch, getState) => {
     if (shouldFetchPhoto(getState(), id)) {
       return dispatch(fetchPhoto(id)).then(() =>

@@ -13,6 +13,7 @@ The2ofus::Application.routes.draw do
   end
 
   resources :photos, only: :show
+  get '/gallery/:id', to: 'photos#show'
 
   ActiveAdmin.routes(self)
 end
