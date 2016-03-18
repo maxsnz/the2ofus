@@ -33,7 +33,7 @@ var GalleryItem = React.createClass({
         <div className="g-item__username">{this.props.data.username}</div>
       </div> 
       <div className="g-item__image" onClick={() => this.props.onPhotoClick()}>
-        <img width="274" src={this.props.data.src} />
+        <img  src={this.props.data.src} />
       </div>
       <div className="g-item__auth-position">
         <div className={'g-item__auth ' + (this.props.authOpened ? 'g-item__auth--opened' : '')}>

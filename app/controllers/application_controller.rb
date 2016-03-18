@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  def mobile_device?
+     (request.user_agent =~ /(iPhone|iPod|Android|webOS|Mobile)/) && (request.user_agent !~ /iPad/)
+  end
+
+  helper_method :mobile_device?
+
   protect_from_forgery
 
   protected

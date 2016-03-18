@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+// https://github.com/dogfessional/react-swipeable
+var Swipeable = require('react-swipeable')
+
 
 var Photo = React.createClass({
 
@@ -10,7 +13,8 @@ var Photo = React.createClass({
     disableScroll();
     return <div className="p-wrapper">
       <div className="p-blacker" onClick={() => {this.props.onCloseClick()}} />
-      <div className="p">
+      <Swipeable onSwiped={() => {this.props.onCloseClick()}}>
+        <div className="p swipe-container" >
         <div 
           className="p-image" 
           style={{backgroundImage: 'url('+this.props.data.src+')'}}
@@ -30,7 +34,8 @@ var Photo = React.createClass({
           </div>
         </div>
         <div className="p-cross" onClick={() => {this.props.onCloseClick()}} />
-      </div>
+        </div>
+      </Swipeable>
     </div>
   }
 });

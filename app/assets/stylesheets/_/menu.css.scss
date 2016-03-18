@@ -15,12 +15,16 @@
   .gallery-page & {border-color:#000;}
   width: 63px;
   height: 63px;
+
   right: 25px;
   left: auto;
   top: 25px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+  body.mobile & {width:41px; height: 41px; right:17px; top:17px; padding: 7px; font-size:11px;}
+}
+
   .topMenu.active {
     opacity: .4; 
     .gallery-page & {border-color:#fff;}
