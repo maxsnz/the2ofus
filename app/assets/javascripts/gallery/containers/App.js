@@ -3,12 +3,22 @@ import { connect } from 'react-redux'
 import { like, auth, photoClicked, closePhoto } from '../actions'
 import Gallery from '../components/Gallery'
 import Photo from '../components/Photo'
+import PhotoMobile from '../components/PhotoMobile'
 import PhotoLoader from '../components/PhotoLoader'
+import { hasClass } from '../helpers'
+
+var mobile = hasClass(document.body, 'mobile');
 
 
 class App extends Component {
   render() {
     const { dispatch, data } = this.props
+    var photo;
+    if (mobile) {
+      photo = <PhotoMobile data={data.photos[data.openedPhoto]} onCloseClick={() => dispatch(closePhoto())} />;
+    } else {
+      photo = <Photo data={data.photos[data.openedPhoto]} onCloseClick={() => dispatch(closePhoto())} />;
+    }
     return (
       <div>
         <Gallery 
@@ -22,10 +32,7 @@ class App extends Component {
           page={data.next_page}
           onClick={page => dispatch(nextPageClicked(page))}
         />
-        <Photo 
-          data={data.photos[data.openedPhoto]} 
-          onCloseClick={() => dispatch(closePhoto())}
-        />
+        {photo}
       </div>
     )
   }

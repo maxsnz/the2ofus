@@ -47,6 +47,11 @@ function receivePhoto(id, json) {
 }
 
 function openPhoto(id) {
+  // console.log($('#item_'+id).offset().top);
+  // if (($('body.mobile .p').length > 0) && ($('#item_'+id).length > 0)) {
+
+  //   $('body.mobile .p').css('top', $('#item_'+id).offset().top+'px');
+  // }
   return {
     type: OPEN_PHOTO,
     id

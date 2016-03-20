@@ -27,7 +27,7 @@ var Gallery = React.createClass({
 
 var GalleryItem = React.createClass({
   render: function() {
-    return <div className="g-item">
+    return <div className="g-item" id={'item_'+this.props.data.id}>
       <div className="g-item__top">
         <div 
           className={'g-item__like ' + (this.props.data.liked ? 'g-item__like--liked' : '')} 

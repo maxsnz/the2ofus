@@ -22,7 +22,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; 
-  body.mobile & {width:41px; height: 41px; right:17px; top:17px; padding: 7px; font-size:11px;}
+  body.mobile & {position: absolute; width:41px; height: 41px; right:17px; top:17px; padding: 7px; font-size:11px;}
 }
 
   .topMenu.active {
