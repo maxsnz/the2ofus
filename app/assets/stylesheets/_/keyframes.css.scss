@@ -9,10 +9,19 @@
 
 @keyframes load-in {
   0% {
-    width: 0; }
+    width: 0; 
+  }
   66% {
     width: 100%;
-    opacity: 1; }
+    opacity: 1; 
+  }
   100% {
     width: 100%;
-    opacity: 0; } }
+    opacity: 0; 
+  } 
+}
+
+@include keyframes(spin) {
+  0% {@include transform(rotate(0deg));}
+  100% {@include transform(rotate(360deg));}
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { like, auth, photoClicked, closePhoto } from '../actions'
 import Gallery from '../components/Gallery'
 import Photo from '../components/Photo'
+import PhotoLoader from '../components/PhotoLoader'
 
 
 class App extends Component {
@@ -16,6 +17,10 @@ class App extends Component {
           onLikeClick={ index => dispatch(like(index)) } 
           onPhotoClick={ index => dispatch(photoClicked(index)) }
           onAuthProviderClick={ (index, provider) => dispatch(auth(index, provider, dispatch)) } 
+        />
+        <PhotoLoader
+          page={data.next_page}
+          onClick={page => dispatch(nextPageClicked(page))}
         />
         <Photo 
           data={data.photos[data.openedPhoto]} 

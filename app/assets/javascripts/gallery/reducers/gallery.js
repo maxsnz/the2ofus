@@ -65,9 +65,12 @@ function photos(state, action) {
       isLoading: true
     })
   case FETCH_ALL_ITEMS_SUCCESS:
+    let next_page = parseInt(action.current_page) + 1
+    if (next_page > action.total_pages) {next_page = undefined}
     return Object.assign({}, state, {
       isLoading: false,
-      photos: action.photos
+      photos: action.photos,
+      next_page: next_page
     })
   case FETCH_ALL_ITEMS_ERROR:
     return Object.assign({}, state, {

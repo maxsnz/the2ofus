@@ -57,23 +57,23 @@
   } 
 }
 
-@include keyframes(rotate) {
-  0% {
-    @include rotate(0deg);
+// @include keyframes(rotate) {
+//   0% {
+//     @include rotate(0deg);
     
-  }
-  50% {
-    @include rotate(-180deg);
+//   }
+//   50% {
+//     @include rotate(-180deg);
     
-  }
-  100% {
-    @include rotate(-360deg);
-  }
-}
+//   }
+//   100% {
+//     @include rotate(-360deg);
+//   }
+// }
 
-@include keyframes(play_timer) {
-  100% { background-position: 0 -832px; }
-}
+// @include keyframes(play_timer) {
+//   100% { background-position: 0 -832px; }
+// }
 
 @mixin bgp ($x, $y) {
   // background-position: #{$x}px #{$y}px;

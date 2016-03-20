@@ -80,6 +80,13 @@ function fetchPhoto(id) {
   };
 }
 
+export function nextPageClicked(page) {
+  return {
+    type: NEXT_PAGE_CLICKED,
+    page
+  };
+}
+
 
 export function photoClicked(id) {
   // console.log('photoClicked', id);
@@ -128,7 +135,7 @@ export function fetchAllItemsFromServer() {
     dispatch({type: FETCH_ALL_ITEMS});
     return fetch('/api/photos.json')
       .then(response => response.json())
-      .then(json => dispatch({type: FETCH_ALL_ITEMS_SUCCESS,photos: formatArrayAsObject(json)}))
+      .then(json => dispatch({type: FETCH_ALL_ITEMS_SUCCESS,photos: formatArrayAsObject(json.photos), total_pages: json.total_pages, current_page:json.current_page}))
       .then(response => {
         let photo = parseInt(window.location.pathname.split('/')[2])
         if (photo > 0) {

@@ -13,8 +13,13 @@ ActiveAdmin.register Photo do
     redirect_to collection_path
   end
 
+  batch_action :publish do |selection|
+    Photo.find(selection).each { |p| p.publish }
+    redirect_to collection_path
+  end
+
   config.sort_order = "posted_at_desc"
-  config.per_page = 50
+  config.per_page = 100
 
   scope(:awaiting_moderation, :default => true) do |photos|
     photos.awaiting_moderation

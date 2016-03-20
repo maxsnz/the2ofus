@@ -6,8 +6,11 @@ var Gallery = React.createClass({
     if (!this.props.data) {
       return null;
     }
+    let keys = Object.keys( this.props.data );
+    keys.sort( function ( a, b ) { return b - a; } );
     return <div className="g">
-      {Object.keys(this.props.data).map(id => 
+      
+      {keys.map(id => 
       // {this.props.data.map((item, id) =>
         <GalleryItem 
           key={id} 
