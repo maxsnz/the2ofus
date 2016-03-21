@@ -199,17 +199,34 @@ h1 {
 }
 .p-body {font:16px/19px $futura; color:#7a7a7a;}
 .p-line {width: 77px; height: 1px; background:#000; margin: 23px 0;}
-.p-rating {padding-left: 47px; font:39px/27px $futura; height: 27px; background:inline-image('base64/p-rating.png') 0 50% no-repeat;}
+.p-rating {
+  font:39px/27px $futura; 
+  height: 27px; 
+  &:before {
+    content: ' ';
+    background:inline-image('base64/p-rating.png') 0 50% no-repeat;
+    height: 27px;
+    width: 30px;
+    display: inline-block;
+    margin-right: 17px;
+  }
+  body.mobile & {
+    position: absolute; bottom:0;right:0; height: 25px;
+    font:29px/22px $futura; 
+    &:before {background-size: 100%;  margin-right: 11px;width: 22px;height: 19px;}
+  }
+}
 .p-share {
   position: absolute; bottom:0;
   font: 16px/16px $futura;
+  body.mobile & {position: static;}
 }
 .p-shareitems {margin:10px 0 0 -15px;}
 .p-shareitem {
   display: inline-block;
   background-repeat: no-repeat;
   margin:0px 16px; height: 27px; background-position: 50% 50%; cursor: pointer;
-  
+  body.mobile & {margin:0px 11px;     background-size: 70%;}
   &.p-fb {width: 14px; background-image:inline-image('base64/p-share_fb.png');}
   &.p-tw {width: 29px; background-image:inline-image('base64/p-share_tw.png');}
   &.p-vk {width: 31px; background-image:inline-image('base64/p-share_vk.png');}
