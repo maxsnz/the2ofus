@@ -10,7 +10,7 @@ class Api::PhotosController < Api::BaseController
 
     # order_field = params[:order] == "rating" ? "rating" : "id"
     order_field = "id"
-    collection = scope.order("#{order_field} desc").paginate(page: params[:page], per_page: 10)
+    collection = scope.order("#{order_field} desc").paginate(page: params[:page], per_page: 27)
 
     render_json({
       total_pages: collection.total_pages,

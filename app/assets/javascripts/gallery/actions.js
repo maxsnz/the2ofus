@@ -15,6 +15,9 @@ export const REQUEST_PHOTO = 'REQUEST_PHOTO'
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO'
 export const OPEN_PHOTO = 'OPEN_PHOTO'
 export const CLOSE_PHOTO = 'CLOSE_PHOTO'
+export const FETCH_PAGE = 'FETCH_PAGE'
+export const FETCH_PAGE_SUCCESS = 'FETCH_PAGE_SUCCESS'
+export const FETCH_PAGE_ERROR = 'FETCH_PAGE_ERROR'
 
 // Action
 export function like(id) {
@@ -65,7 +68,14 @@ export function closePhoto(id) {
   };
 }
 
-
+function shouldLikePhoto(state, id) {
+  const photo = state.gallery.photos[id];
+  if (photo.liked) {
+    return false;
+  } else  {
+    return true;
+  }
+}
 
 function shouldFetchPhoto(state, id) {
   const photo = state.gallery.photos[id];
@@ -149,4 +159,14 @@ export function fetchAllItemsFromServer() {
       })
       .catch(errors => dispatch({type: FETCH_ALL_ITEMS_ERROR, errors: errors}))
   };
+}
+
+export function nextPageClicked(page) {
+  return (dispatch) => {
+    fetch('/api/photos.json?page='+page)
+      .then(response => response.json())
+      .then(json => dispatch({type: FETCH_PAGE_SUCCESS,photos: formatArrayAsObject(json.photos), total_pages: json.total_pages, current_page:json.current_page}))
+      .catch(errors => dispatch({type: FETCH_PAGE_ERROR, errors: errors}))
+    return dispatch({type: FETCH_PAGE});
+  }
 }

@@ -1,4 +1,4 @@
-import { FETCH_ALL_ITEMS, FETCH_ALL_ITEMS_SUCCESS, FETCH_ALL_ITEMS_ERROR, LIKE, AUTHOPEN, AUTHCLOSE, AUTH_START, AUTH_SUCCESS,  AUTH_FAIL, LIKES_RECEIVED, REQUEST_PHOTO, RECEIVE_PHOTO, OPEN_PHOTO, CLOSE_PHOTO} from '../actions'
+import { FETCH_ALL_ITEMS, FETCH_ALL_ITEMS_SUCCESS, FETCH_ALL_ITEMS_ERROR, LIKE, AUTHOPEN, AUTHCLOSE, AUTH_START, AUTH_SUCCESS,  AUTH_FAIL, LIKES_RECEIVED, REQUEST_PHOTO, RECEIVE_PHOTO, OPEN_PHOTO, CLOSE_PHOTO, FETCH_PAGE, FETCH_PAGE_SUCCESS, FETCH_PAGE_ERROR} from '../actions'
 
 // Reducer for authorization store
 export default function authorization(state = initialState, action) {
@@ -59,19 +59,21 @@ function photo(state, action) {
 // Reducer for gallery photos store
 function photos(state, action) {
   switch (action.type) {
-
+  case FETCH_PAGE:
   case FETCH_ALL_ITEMS:
     return Object.assign({}, state, {
       isLoading: true
     })
+  case FETCH_PAGE_SUCCESS:
   case FETCH_ALL_ITEMS_SUCCESS:
     let next_page = parseInt(action.current_page) + 1
     if (next_page > action.total_pages) {next_page = undefined}
     return Object.assign({}, state, {
       isLoading: false,
-      photos: action.photos,
+      photos: Object.assign(state.photos, action.photos),
       next_page: next_page
     })
+  case FETCH_PAGE_ERROR:
   case FETCH_ALL_ITEMS_ERROR:
     return Object.assign({}, state, {
       isLoading: false,
@@ -123,6 +125,9 @@ export default function gallery(state = initialState, action) {
   case FETCH_ALL_ITEMS:
   case FETCH_ALL_ITEMS_SUCCESS:
   case FETCH_ALL_ITEMS_ERROR:
+  case FETCH_PAGE:
+  case FETCH_PAGE_SUCCESS:
+  case FETCH_PAGE_ERROR:
   case LIKES_RECEIVED:
     return photos(state, action);
   case REQUEST_PHOTO:

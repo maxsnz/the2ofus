@@ -7,7 +7,10 @@ var PhotoLoader = React.createClass({
       return null;
     }
     return <div className="loader-container">
-      <div className="loader " onClick={() => {this.props.nextPageClicked(this.props.page)}}>
+      <div 
+        className={"loader "+(this.props.isLoading? ' loader-active' : '')} 
+        onClick={() => {this.props.onClick(this.props.page)}}
+        >
         <div className="loader-arrows " />
       </div>
     </div>

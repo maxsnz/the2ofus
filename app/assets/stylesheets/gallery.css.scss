@@ -13,8 +13,7 @@ body {
   overflow-x:hidden;
 }
 
-#root {    position: relative;}
-.gallery-page .gallery-item {display: none;}
+.gallery-root {    position: relative;}
 
 .preloader {
   position: fixed;
@@ -75,6 +74,7 @@ h1 {
 }
 .g-item__image {
   position: relative; right: 35px;
+  cursor: pointer;
   body.mobile & {width:200px;right: 0px;}
   img {
     width: 274px; 

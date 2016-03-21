@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { like, auth, photoClicked, closePhoto } from '../actions'
+import { like, auth, photoClicked, closePhoto, nextPageClicked } from '../actions'
 import Gallery from '../components/Gallery'
 import Photo from '../components/Photo'
 import PhotoMobile from '../components/PhotoMobile'
@@ -29,6 +29,7 @@ class App extends Component {
           onAuthProviderClick={ (index, provider) => dispatch(auth(index, provider, dispatch)) } 
         />
         <PhotoLoader
+          loading={data.isLoading}
           page={data.next_page}
           onClick={page => dispatch(nextPageClicked(page))}
         />
