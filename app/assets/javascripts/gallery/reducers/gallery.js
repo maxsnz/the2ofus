@@ -1,4 +1,4 @@
-import { FETCH_ALL_ITEMS, FETCH_ALL_ITEMS_SUCCESS, FETCH_ALL_ITEMS_ERROR, LIKE, AUTHOPEN, AUTHCLOSE, AUTH_START, AUTH_SUCCESS,  AUTH_FAIL, LIKES_RECEIVED, REQUEST_PHOTO, RECEIVE_PHOTO, OPEN_PHOTO, CLOSE_PHOTO, FETCH_PAGE, FETCH_PAGE_SUCCESS, FETCH_PAGE_ERROR} from '../actions'
+import { FETCH_ALL_ITEMS, FETCH_ALL_ITEMS_SUCCESS, FETCH_ALL_ITEMS_ERROR, LIKE, AUTHOPEN, AUTHCLOSE, AUTH_START, AUTH_SUCCESS,  AUTH_FAIL, LIKES_RECEIVED, LIKES_UPDATE, REQUEST_PHOTO, RECEIVE_PHOTO, OPEN_PHOTO, CLOSE_PHOTO, FETCH_PAGE, FETCH_PAGE_SUCCESS, FETCH_PAGE_ERROR} from '../actions'
 
 // Reducer for authorization store
 export default function authorization(state = initialState, action) {
@@ -18,19 +18,12 @@ const initialState = {
   // photos: [{"id":1,"authOpened":false,"src":"http://cs628622.vk.me/v628622034/3900d/Qck_3pkNdH4.jpg","username":"Joanna Kuchta"},{"id":3,"src":"http://cs627526.vk.me/v627526119/40122/uqgkpwImNRY.jpg","username":"Dinochka Good-Natured"},{"id":4,"src":"http://cs631716.vk.me/v631716486/10b8a/lq0wIva24zQ.jpg","username":"Kylie Jenner"},{"id":9,"src":"http://cs628530.vk.me/v628530576/356b3/OCZmmkxDYAY.jpg","username":"CALVIN KLEIN JEANS"},{"id":16,"src":"http://cs633619.vk.me/v633619389/eca4/VcGTUwnc4n4.jpg","username":"Ангелина Васильевна"},{"id":17,"src":"http://cs630916.vk.me/v630916359/c534/aEoiy-vp0_M.jpg","username":"Себастьян Клеменс"}]
 };
 
-function likes(state, action) {
-  switch (action.type) {
-  case LIKES_RECEIVED:
-
-    let newItems = {...state};
-    action.data.forEach((likedId) => {
-      if (newItems[likedId]) newItems[likedId].liked = true;
-    });
-
-    return newItems;
-  default:
-    return state;
-  }
+function updateLikes(state, data) {
+  let newItems = {...state};
+  data.forEach((likedId) => {
+    if (newItems[likedId]) newItems[likedId].liked = true;
+  });
+  return newItems;
 }
 
 // Reducer for photo store
@@ -81,7 +74,11 @@ function photos(state, action) {
     })
   case LIKES_RECEIVED:
     return Object.assign({}, state, {
-      photos: likes(state.photos, action)
+      likes: action.data
+    });
+  case LIKES_UPDATE:
+    return Object.assign({}, state, {
+      photos: updateLikes(state.photos, state.likes)
     });
   case AUTHOPEN:
     return Object.assign({}, state, {
@@ -129,6 +126,7 @@ export default function gallery(state = initialState, action) {
   case FETCH_PAGE_SUCCESS:
   case FETCH_PAGE_ERROR:
   case LIKES_RECEIVED:
+  case LIKES_UPDATE:
     return photos(state, action);
   case REQUEST_PHOTO:
   case RECEIVE_PHOTO:

@@ -11,6 +11,7 @@ export const AUTH_FAIL = 'AUTH_FAIL'
 export const AUTHOPEN = 'AUTHOPEN'
 export const AUTHCLOSE = 'AUTHCLOSE'
 export const LIKES_RECEIVED = 'LIKES_RECEIVED'
+export const LIKES_UPDATE = 'LIKES_UPDATE'
 export const REQUEST_PHOTO = 'REQUEST_PHOTO'
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO'
 export const OPEN_PHOTO = 'OPEN_PHOTO'
@@ -123,6 +124,7 @@ export function getMyLikes(dispatch) {
   $.get("/api/likes", {token: Auth.getParams('token'), authenticity_token: Auth.getParams('authenticity_token')}, function(data) {
     data = getIds(data, 'photo_id');
     dispatch({type: LIKES_RECEIVED, data});
+    dispatch({type: LIKES_UPDATE});
   });
 }
 
@@ -166,6 +168,7 @@ export function nextPageClicked(page) {
     fetch('/api/photos.json?page='+page)
       .then(response => response.json())
       .then(json => dispatch({type: FETCH_PAGE_SUCCESS,photos: formatArrayAsObject(json.photos), total_pages: json.total_pages, current_page:json.current_page}))
+      .then(json => dispatch({type: LIKES_UPDATE}))
       .catch(errors => dispatch({type: FETCH_PAGE_ERROR, errors: errors}))
     return dispatch({type: FETCH_PAGE});
   }

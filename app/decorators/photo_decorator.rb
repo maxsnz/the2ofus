@@ -30,7 +30,11 @@ class PhotoDecorator < Draper::Decorator
   end
 
   def username
-    h.link_to(model.username, 'http://vk.com/'+model.username, target: "_blank")
+    if model.source_text == 'Instagram'
+      h.link_to(model.username, 'https://www.instagram.com/'+model.username, target: "_blank")
+    else
+      h.link_to(model.username, 'https://vk.com/'+model.username, target: "_blank")
+    end
   end
 
   def body
